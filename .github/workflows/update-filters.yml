@@ -2,16 +2,18 @@ name: Update uBlock Filters
 
 on:
   schedule:
-    - cron: '0 3 * * *'  # setiap hari jam 03:00 UTC
-  workflow_dispatch:      # bisa trigger manual
+    - cron: '0 3 * * *'
+  workflow_dispatch:
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # PENTING: Untuk mengatasi error 403
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # Gunakan v4 (versi terbaru)
 
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
@@ -21,12 +23,10 @@ jobs:
           chmod +x merge-ublock-filters.sh
           ./merge-ublock-filters.sh
 
-      - name: Commit & Push merged file
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit & Push
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add ublock-merged.txt
-          git commit -m "Update uBlock filters [ci skip]" || echo "No changes"
-          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} HEAD:main
+          git commit -m "Update uBlock filters [ci skip]" || echo "No changes to commit"
+          git push
