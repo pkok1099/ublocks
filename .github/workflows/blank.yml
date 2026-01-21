@@ -1,0 +1,32 @@
+name: Update uBlock Filters
+
+on:
+  schedule:
+    - cron: '0 3 * * *'  # setiap hari jam 03:00 UTC
+  workflow_dispatch:      # bisa manual trigger
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Run merge script
+        run: |
+          chmod +x merge-ublock-filters.sh
+          ./merge-ublock-filters.sh
+
+      - name: Commit & Push merged file
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add ublock-merged.txt
+          git commit -m "Update uBlock filters [ci skip]" || echo "No changes"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
