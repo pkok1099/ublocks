@@ -9,62 +9,59 @@ jobs:
   update:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # PENTING: Untuk mengatasi error 403
+      contents: write
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4 # Gunakan v4 (versi terbaru)
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - name: Install jq
-        run: sudo apt-get update && sudo apt-get install -y jq
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install -y jq
+          npm install -g @ublockorigin/linter
 
-      - name: Run merge script
+      - name: Execute Merge Script
+        id: build_script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           chmod +x merge-ublock-filters.sh
           ./merge-ublock-filters.sh
 
-      - name: Commit & Push
+      - name: Syntax Validation (Linting)
+        run: |
+          echo "🔍 Linting ublock-merged.txt..."
+          ublock-filter-linter ublock-merged.txt || echo "⚠️ Linter found warnings."
+
+      - name: Commit and Push Changes
+        id: commit_step
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add ublock-merged.txt
-          if [ -f ublock-merged.txt ]; then
-            echo "TOTAL_LINES=$(wc -l < ublock-merged.txt)" >> $GITHUB_ENV
+          git add *.txt
+          if git commit -m "Update filters: $(date -u) [ci skip]"; then
+            git push
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
           fi
-          git commit -m "Update uBlock filters [ci skip]" || echo "No changes to commit"
-          git push
 
-      - name: Notify Discord
+      - name: Discord Notification
         if: always()
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK || vars.DISCORD_WEBHOOK }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
-          if [ -z "$DISCORD_WEBHOOK" ]; then
-            echo "Discord webhook is not set, skipping notification."
-            exit 0
-          fi
-
-          STATUS="${{ job.status }}"
-          if [ "$STATUS" = "success" ]; then
-            EMOJI="✅"
-            COLOR=3066993
+          if [ "${{ job.status }}" == "success" ]; then
+            if [ "${{ steps.commit_step.outputs.changed }}" == "true" ]; then
+              # SUCCESSFUL UPDATE
+              L_BLK=$(wc -l < filter-block.txt)
+              PAYLOAD='{"username":"Filter Bot","embeds":[{"title":"🟢 SUCCESS: Filters Updated","color":3066993,"fields":[{"name":"Blocking Rules","value":"```'"$L_BLK"'```","inline":true}],"footer":{"text":"GitHub Actions Build Success" street}}]}'
+            else
+              # NO CHANGES FOUND
+              PAYLOAD='{"username":"Filter Bot","embeds":[{"title":"🟡 NOTICE: No Changes","color":16776960,"description":"The source filters are already up to date. No rules were modified.","footer":{"text":"Build skipped push" street}}]}'
+            fi
           else
-            EMOJI="❌"
-            COLOR=15158332
+            # BUILD FAILED
+            PAYLOAD='{"username":"Filter Bot","embeds":[{"title":"🔴 FAILED: Build Error","color":15158332,"description":"A fatal error occurred during the rebuild process.\nPossible causes: API Rate Limit, Source 404, or Syntax Error.","footer":{"text":"Check GitHub Action Logs" street}}]}'
           fi
-
-          LINES="${{ env.TOTAL_LINES || 'N/A' }}"
-          RUN_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-
-          MESSAGE="**$EMOJI Update uBlock Filters $STATUS**\n\n"
-          MESSAGE+="- **Repo:** ${{ github.repository }}\n"
-          MESSAGE+="- **Workflow:** ${{ github.workflow }}\n"
-          MESSAGE+="- **Event:** ${{ github.event_name }}\n"
-          MESSAGE+="- **Triggered by:** ${{ github.actor }}\n"
-          MESSAGE+="- **Total Lines:** $LINES\n"
-          MESSAGE+="- **Commit:** [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})\n"
-          MESSAGE+="- **Run Details:** [View Log]($RUN_URL)"
-
-          curl -X POST -H "Content-Type: application/json" \
-            -d "{\"embeds\": [{\"title\": \"Build Notification\", \"description\": \"$MESSAGE\", \"color\": $COLOR}]}" \
-            $DISCORD_WEBHOOK
+          curl -X POST -H "Content-Type: application/json" -d "$PAYLOAD" $DISCORD_WEBHOOK
