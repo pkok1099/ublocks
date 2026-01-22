@@ -16,24 +16,16 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Dependencies
-        run: |
-          sudo apt-get update && sudo apt-get install -y jq
-          npm install -g @ublockorigin/linter
+        run: sudo apt-get update && sudo apt-get install -y jq
 
       - name: Execute Merge Script
-        id: build_script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           chmod +x merge-ublock-filters.sh
           ./merge-ublock-filters.sh
 
-      - name: Syntax Validation (Linting)
-        run: |
-          echo "🔍 Linting ublock-merged.txt..."
-          ublock-filter-linter ublock-merged.txt || echo "⚠️ Linter found warnings."
-
-      - name: Commit and Push Changes
+      - name: Commit and Push
         id: commit_step
         run: |
           git config user.name "github-actions[bot]"
@@ -53,15 +45,12 @@ jobs:
         run: |
           if [ "${{ job.status }}" == "success" ]; then
             if [ "${{ steps.commit_step.outputs.changed }}" == "true" ]; then
-              # SUCCESSFUL UPDATE
               L_BLK=$(wc -l < filter-block.txt)
-              PAYLOAD='{"username":"Filter Bot","embeds":[{"title":"🟢 SUCCESS: Filters Updated","color":3066993,"fields":[{"name":"Blocking Rules","value":"```'"$L_BLK"'```","inline":true}],"footer":{"text":"GitHub Actions Build Success" street}}]}'
+              PAYLOAD='{"username":"Filter Bot","embeds":[{"title":"🟢 SUCCESS: Filters Updated","color":3066993,"fields":[{"name":"Blocking Rules","value":"```'"$L_BLK"'```","inline":true}]}]}'
             else
-              # NO CHANGES FOUND
-              PAYLOAD='{"username":"Filter Bot","embeds":[{"title":"🟡 NOTICE: No Changes","color":16776960,"description":"The source filters are already up to date. No rules were modified.","footer":{"text":"Build skipped push" street}}]}'
+              PAYLOAD='{"username":"Filter Bot","embeds":[{"title":"🟡 NOTICE: No Changes","color":16776960,"description":"Source filters are already up to date."}]}'
             fi
           else
-            # BUILD FAILED
-            PAYLOAD='{"username":"Filter Bot","embeds":[{"title":"🔴 FAILED: Build Error","color":15158332,"description":"A fatal error occurred during the rebuild process.\nPossible causes: API Rate Limit, Source 404, or Syntax Error.","footer":{"text":"Check GitHub Action Logs" street}}]}'
+            PAYLOAD='{"username":"Filter Bot","embeds":[{"title":"🔴 FAILED: Build Error","color":15158332,"description":"A fatal error occurred. Check logs for API limits or connection issues."}]}'
           fi
           curl -X POST -H "Content-Type: application/json" -d "$PAYLOAD" $DISCORD_WEBHOOK
