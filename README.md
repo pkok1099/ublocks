@@ -1,5 +1,5 @@
 # ublocks
-![Update uBlock Filters](https://github.com/pkok1099/ublocks/actions/workflows/update.yml/badge.svg)
+![Update uBlock Filters](https://github.com/pkok1099/ublocks/actions/workflows/update-filters.yml/badge.svg)
 
 This repository automatically merges and categorizes filters from high-authority sources such as **uBlock Origin** and **AdGuard** into optimized, deduplicated lists.
 
