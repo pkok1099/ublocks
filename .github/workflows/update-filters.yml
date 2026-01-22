@@ -28,6 +28,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add ublock-merged.txt
+          if [ -f ublock-merged.txt ]; then
+            echo "TOTAL_LINES=$(wc -l < ublock-merged.txt)" >> $GITHUB_ENV
+          fi
           git commit -m "Update uBlock filters [ci skip]" || echo "No changes to commit"
           git push
 
@@ -50,7 +53,17 @@ jobs:
             COLOR=15158332
           fi
 
-          MESSAGE="**$EMOJI Update uBlock Filters $STATUS**\n\n**Repo:** ${{ github.repository }}\n**Workflow:** ${{ github.workflow }}\n**Commit:** [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})"
+          LINES="${{ env.TOTAL_LINES || 'N/A' }}"
+          RUN_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+          MESSAGE="**$EMOJI Update uBlock Filters $STATUS**\n\n"
+          MESSAGE+="- **Repo:** ${{ github.repository }}\n"
+          MESSAGE+="- **Workflow:** ${{ github.workflow }}\n"
+          MESSAGE+="- **Event:** ${{ github.event_name }}\n"
+          MESSAGE+="- **Triggered by:** ${{ github.actor }}\n"
+          MESSAGE+="- **Total Lines:** $LINES\n"
+          MESSAGE+="- **Commit:** [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})\n"
+          MESSAGE+="- **Run Details:** [View Log]($RUN_URL)"
 
           curl -X POST -H "Content-Type: application/json" \
             -d "{\"embeds\": [{\"title\": \"Build Notification\", \"description\": \"$MESSAGE\", \"color\": $COLOR}]}" \
