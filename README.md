@@ -3,6 +3,9 @@
 
 This repository automatically merges and categorizes filters from high-authority sources such as **uBlock Origin** and **AdGuard** into optimized, deduplicated lists.
 
+> [!CAUTION]
+> **Do not use these filters directly.** These lists are specifically formatted and merged for a dedicated application. Using them in standard ad-blockers may lead to performance issues or unexpected behavior.
+
 ## 🚀 Features
 - **Automated**: Synced daily at 03:00 UTC via GitHub Actions.
 - **Categorized**: Rules are split into specific files (Blocking, Allow, Cosmetic, Metadata).
@@ -40,4 +43,4 @@ The `merge-ublock-filters.sh` script handles the core logic:
 5. **Verify**: Integrity checks prevent empty or corrupted files from being pushed to the repository.
 
 ---
-*Automatically maintained by [Filter Bot](.github/workflows/update.yml).*
+*Automatically maintained by [Filter Bot](.github/workflows/update-filters.yml).*
