@@ -1,79 +1,106 @@
 #!/usr/bin/env bash
 set -e
 
-# Daftar API Repositori yang SUDAH DIVALIDASI
+# --- CONFIGURATION ---
+OUT_BULK="ublock-merged.txt"
+OUT_BLOCK="filter-block.txt"
+OUT_ALLOW="filter-allow.txt"
+OUT_COSMETIC="filter-cosmetic.txt"
+OUT_META="filter-metadata.txt"
+
+TMPDIR=$(mktemp -d)
+CURL_CONFIG="$TMPDIR/curl_config"
+
+# Target Repository APIs
 REPOS=(
     "https://api.github.com/repos/uBlockOrigin/uAssets/contents/filters"
     "https://api.github.com/repos/AdguardTeam/AdguardFilters/contents/BaseFilter/sections"
     "https://api.github.com/repos/AdguardTeam/AdguardFilters/contents/SpywareFilter/sections"
-    # Perbaikan: Annoyances dipecah ke kategori spesifik agar valid
     "https://api.github.com/repos/AdguardTeam/AdguardFilters/contents/AnnoyancesFilter/Popups/sections"
     "https://api.github.com/repos/AdguardTeam/AdguardFilters/contents/AnnoyancesFilter/Cookies/sections"
 )
 
+# --- 1. FETCH API LISTS WITH RATE LIMIT CHECK ---
+echo "⚡ Fetching API lists..."
+AUTH_HEADER=()
+[ -n "$GITHUB_TOKEN" ] && AUTH_HEADER=(-H "Authorization: token $GITHUB_TOKEN")
 
-OUT="ublock-merged.txt"
-TMPDIR=$(mktemp -d)
-
-# Header
-{
-    echo "! uBlock filters merged"
-    echo "! Updated: $(date -u)"
-    echo ""
-} > "$OUT"
-
-for REPO_API in "${REPOS[@]}"; do
-    echo "Processing: $REPO_API"
-    
-    # Request ke GitHub API
-    response=$(curl -sL "$REPO_API")
-    
-    # Deteksi Tipe Respon (Array/Object/Error)
-    json_type=$(echo "$response" | jq -r 'type')
-    
-    if [ "$json_type" == "array" ]; then
-        # KASUS 1: Folder (berisi banyak file)
-        # Ambil semua file .txt
-        urls=$(echo "$response" | jq -r '.[] | select(.type=="file" and (.name | endswith(".txt"))) | .download_url')
-        
-    elif [ "$json_type" == "object" ]; then
-        # KASUS 2: Single File atau Error Message
-        msg=$(echo "$response" | jq -r '.message // empty')
-        
-        if [ ! -z "$msg" ] && [ "$msg" != "null" ]; then
-            echo "  ❌ Error: $msg"
-            urls=""
-        else
-            urls=$(echo "$response" | jq -r '.download_url // empty')
-        fi
-    else
-        urls=""
-    fi
-
-    # Eksekusi Download
-    if [ ! -z "$urls" ]; then
-        for url in $urls; do
-            filename="$(basename "$url")_$(date +%s%N).tmp"
-            # Download background
-            curl -sL "$url" -o "$TMPDIR/$filename" &
-        done
-        echo "  ✅ Downloading files..."
-    fi
+for i in "${!REPOS[@]}"; do
+    curl -sL "${AUTH_HEADER[@]}" "${REPOS[$i]}" -o "$TMPDIR/api_$i.json" &
 done
-
-# Tunggu semua download selesai
 wait
 
-# Gabung file
-echo "Merging files..."
-if ls "$TMPDIR"/*.tmp >/dev/null 2>&1; then
-    # Gabung + Hapus '!' comments + Hapus Empty Lines + Hapus Duplicate Lines
-    cat "$TMPDIR"/*.tmp | grep -v '^!' | awk 'NF && !seen[$0]++' >> "$OUT"
-    echo "Done! Saved to $OUT"
-    echo "Total lines: $(wc -l < $OUT)"
-else
-    echo "Warning: No files downloaded."
+if grep -qi "rate limit exceeded" "$TMPDIR"/api_*.json; then
+    echo "❌ ERROR: GitHub API Rate Limit exceeded!"
+    exit 1
 fi
 
-# Bersihkan
+# --- 2. GENERATE DOWNLOAD QUEUE & FAILSAFE ---
+# Extract download_urls and prepare curl config with --fail flag
+jq -r 'if type=="array" then .[] | select(.type=="file" and (.name | endswith(".txt"))) | .download_url else empty end' "$TMPDIR"/api_*.json | \
+awk -v dir="$TMPDIR" '{ 
+    print "url = \"" $0 "\""; 
+    print "output = \"" dir "/file_" NR ".tmp\"";
+    print "fail"; 
+}' > "$CURL_CONFIG"
+
+echo "⬇️  Downloading files (Parallel + Retry)..."
+curl -sL --parallel --parallel-max 15 --retry 3 --retry-delay 2 --config "$CURL_CONFIG" || {
+    echo "❌ ERROR: Download failed (Network issue or 404 Not Found)."
+    exit 1
+}
+
+# --- 3. CLASSIFICATION & NORMALIZATION (AWK) ---
+echo "🧹 Normalizing & Classifying rules..."
+LC_ALL=C awk -v f_bulk="$TMPDIR/bulk.raw" \
+             -v f_block="$TMPDIR/block.raw" \
+             -v f_allow="$TMPDIR/allow.raw" \
+             -v f_cosmetic="$TMPDIR/cosmetic.raw" \
+             -v f_meta="$TMPDIR/meta.raw" \
+    '
+    { 
+        gsub(/\r/, "");          # Normalize Windows Line Endings
+        sub(/^[ \t]+/, "");     # Trim leading whitespace
+        sub(/[ \t]+$/, "");     # Trim trailing whitespace
+    }
+    
+    /^!/ || !NF { next }        # Skip original comments and empty lines
+
+    !seen[$0]++ {
+        print $0 >> f_bulk
+        if ($0 ~ /^@@/) print $0 >> f_allow
+        else if ($0 ~ /##|#@#|#\?#|#\$#/) print $0 >> f_cosmetic
+        else if ($0 ~ /^\[.*\]$/) print $0 >> f_meta
+        else print $0 >> f_block
+    }
+' "$TMPDIR"/file_*.tmp
+
+# --- 4. SORTING & FINAL ASSEMBLY ---
+echo "🗄️  Sorting and writing final files..."
+for cat in bulk block allow cosmetic meta; do
+    target_var="OUT_${cat^^}"
+    target_file="${!target_var}"
+    
+    # Sort for consistent git diffs
+    sort "$TMPDIR/$cat.raw" > "$TMPDIR/$cat.sorted" 2>/dev/null || touch "$TMPDIR/$cat.sorted"
+    
+    case $cat in
+        bulk) title="Bulk Merged Filters" ;;
+        block) title="Network Blocking Rules" ;;
+        allow) title="Exception/Allowlist Rules" ;;
+        cosmetic) title="Cosmetic/Element Hiding" ;;
+        meta) title="Filter Metadata/Headers" ;;
+    esac
+
+    {
+        echo "! Title: $title"
+        echo "! Updated: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+        echo "! Total Rules: $(wc -l < "$TMPDIR/$cat.sorted")"
+        echo "! Homepage: https://github.com/${GITHUB_REPOSITORY:-local}"
+        echo ""
+        cat "$TMPDIR/$cat.sorted"
+    } > "$target_file"
+done
+
+echo "✅ Script Finished successfully!"
 rm -rf "$TMPDIR"
