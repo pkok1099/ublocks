@@ -1,5 +1,5 @@
 ! Title: Network Blocking Rules
-! Updated: 2026-01-22 08:31:58 UTC
+! Updated: 2026-01-22 08:41:16 UTC
 ! Total Rules: 48136
 
 # ABP anti-circumvention filter lists
