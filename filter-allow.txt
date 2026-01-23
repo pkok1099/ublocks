@@ -1,6 +1,6 @@
 ! Title: Exception Rules
-! Updated: 2026-01-22 08:41:16 UTC
-! Total Rules: 16954
+! Updated: 2026-01-23 04:08:18 UTC
+! Total Rules: 16955
 
 @@#.banner%20ad.$image,domain=dokuo666.blog98.fc2.com
 @@$cookie=__gads,domain=godstoryinfo.com|laweducationinfo.com|rsgames.xyz|vichitrainfo.com
@@ -3960,6 +3960,7 @@
 @@||cgtips.org^$generichide
 @@||challenge.place^$ghide
 @@||challenge.seyra.online/challenge.js?api_key=$script
+@@||challenges.cloudflare.com/cdn-cgi/$subdocument,domain=dropmms.*
 @@||challenges.cloudflare.com/turnstile/$3p,script
 @@||challenges.cloudflare.com^$stealth
 @@||chamsko.pl/js/advertisement.js
