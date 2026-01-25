@@ -1,5 +1,5 @@
 ! Title: Exception Rules
-! Updated: 2026-01-24 04:01:49 UTC
+! Updated: 2026-01-25 04:18:02 UTC
 ! Total Rules: 16955
 
 @@#.banner%20ad.$image,domain=dokuo666.blog98.fc2.com
@@ -24,7 +24,6 @@
 @@*$ghide,domain=acortalo.adult|acortalo.com|acortalo.com.ph|acortalo.dev|acortalo.dog|acortalo.film|acortalo.fm|acortalo.gmbh|acortalo.la|acortalo.marketing|acortalo.mobi|acortalo.net|acortalo.net.ph|acortalo.org|acortalo.org.ph|acortalo.ph|acortalo.ski|acortalo.studio|acortalo.tk|acortalo.vacations|acortalo.vg|acortalo.ws|acortalo.xyz|megadescarga.net
 @@*$ghide,domain=adblockstreamtape.*|adblockstrtape.*|adblockstrtech.*|antiadtape.*|shavetape.cash|stape.*|strcloud.*|streamta.*|streamtape.*|streamtapeadblock.*|strtape.*|strtpe.*
 @@*$ghide,domain=akillikafa.com|testcoz.com
-@@*$ghide,domain=allcryptoz.net|batmanfactor.com|crewbase.net|crewus.net|documentaryplanet.xyz|gametechreviewer.com|midebalonu.net|misterio.ro|seory.xyz|shinbhu.net|shinchu.net|substitutefor.com|talkforfitness.com|thefitbrit.co.uk|thumb8.net|thumb9.net|topcryptoz.net|uniqueten.net|ultraten.net
 @@*$ghide,domain=allgemeine-zeitung.de|buffed.de|buerstaedter-zeitung.de|echo-online.de|gamezone.de|lampertheimer-zeitung.de|lauterbacher-anzeiger.de|main-spitze.de|oberhessische-zeitung.de|wiesbadener-kurier.de|wormser-zeitung.de
 @@*$ghide,domain=appsbull.com|diudemy.com|maqal360.com
 @@*$ghide,domain=arcai.com
@@ -33,7 +32,7 @@
 @@*$ghide,domain=bishopsstortfordindependent.co.uk|cambridgeindependent.co.uk|dissexpress.co.uk|fenlandcitizen.co.uk|granthamjournal.co.uk|kentonline.co.uk|lynnnews.co.uk|newarkadvertiser.co.uk|rutland-times.co.uk|spaldingtoday.co.uk|stamfordmercury.co.uk|suffolknews.co.uk|velvetmag.co.uk
 @@*$ghide,domain=bisnis.adigenius.com|adikdrive.my.id
 @@*$ghide,domain=bkgnews.in|ontechhindi.com
-@@*$ghide,domain=blog.potterworld.co|hipsonyc.com|tech.pubghighdamage.com|blog.itijobalert.in|techkhulasha.com|tech.trendingword.com|gyanitheme.com|pubgaimassist.com
+@@*$ghide,domain=blog.potterworld.co|hipsonyc.com|tech.pubghighdamage.com|blog.itijobalert.in|techkhulasha.com|tech.trendingword.com|gyanitheme.com|pubgaimassist.com|scriptgrowagarden.com
 @@*$ghide,domain=bluemediadownload.*|bluemediafile.*|bluemedialink.*|bluemediastorage.*|bluemediaurls.*|urlbluemedia.*
 @@*$ghide,domain=brainly.*|eodev.com
 @@*$ghide,domain=broncos.com.au|bulldogs.com.au|cowboys.com.au|dolphinsnrl.com.au|dragons.com.au|melbournestorm.com.au|newcastleknights.com.au|nswrl.com.au|parraeels.com.au|penrithpanthers.com.au|qrl.com.au|raiders.com.au|roosters.com.au|seaeagles.com.au|sharks.com.au|titans.com.au|warriors.kiwi|weststigers.com.au
@@ -51,7 +50,6 @@
 @@*$ghide,domain=fastcoin.ga|dropcoins.xyz|faucetbr.tk|is2btc.com
 @@*$ghide,domain=fplstatistics.com
 @@*$ghide,domain=freeserverhostingweb.club|me-encantas.com|tanfacil.net|tecnoaldia.net
-@@*$ghide,domain=gplinks.*|banglagolpo.co.in
 @@*$ghide,domain=hotmediahub.com|terabox.fun|fansonlinehub.com|teralink.me|terashare.me|teraearn.com
 @@*$ghide,domain=imagereviser.com|upshrink.com
 @@*$ghide,domain=isekaipalace.com
@@ -109,7 +107,6 @@
 @@*$xhr,domain=thehouseofportable.com
 @@*$xhr,method=head|get,domain=app.axenthost.com,3p
 @@*$xhr,redirect-rule,method=head,domain=starkroboticsfrc.com|sinonimos.de|antonimos.de|quesignifi.ca|tiktokrealtime.com|tiktokcounter.net|tpayr.xyz|poqzn.xyz|ashrfd.xyz|rezsx.xyz|tryzt.xyz|ashrff.xyz|rezst.xyz|dawenet.com|erzar.xyz|waezm.xyz|waezg.xyz|blackwoodacademy.org|cryptednews.space|vivuq.com|swgop.com|vbnmll.com|telcoinfo.online|dshytb.com
-@@*$xhr,script,1p,domain=allcryptoz.net|batmanfactor.com|crewbase.net|crewus.net|documentaryplanet.xyz|gametechreviewer.com|midebalonu.net|misterio.ro|seory.xyz|shinbhu.net|shinchu.net|substitutefor.com|talkforfitness.com|thefitbrit.co.uk|thumb8.net|thumb9.net|topcryptoz.net|uniqueten.net|ultraten.net
 @@*$xhr,script,3p,from=determinemousecshe.shop|ironwinter6m.shop|limiteddollqjc.shop|mindmotion93y8.shop|publicspeed5c.shop|strangernervousql.shop|studyinghuman6js.shop,to=autos|sbs|shop
 @@*.js|$script,3p,domain=sonixgvn.net,denyallow=doubleclick.net|onesignal.com|vlitag.com|googletagmanager.com
 @@*.mp4?$media,stealth=referrer,domain=vidtube.pro
@@ -3154,6 +3151,7 @@
 @@||cdn.cookielaw.org/consent/*.json$domain=bostonglobe.com
 @@||cdn.cookielaw.org/consent/*.json$domain=dmax.de
 @@||cdn.cookielaw.org/consent/*.json$domain=ign.com
+@@||cdn.cookielaw.org/consent/*.json$domain=lasestrellas.tv
 @@||cdn.cookielaw.org/consent/*.json$domain=milwaukeetool.eu
 @@||cdn.cookielaw.org/consent/*.json$domain=mmamania.com|theverge.com|schweizer-illustrierte.ch
 @@||cdn.cookielaw.org/consent/*.json$domain=nintendolife.com
@@ -3209,6 +3207,7 @@
 @@||cdn.cookielaw.org/scripttemplates/otSDKStub.js$domain=idmobile.co.uk
 @@||cdn.cookielaw.org/scripttemplates/otSDKStub.js$domain=insideevs.*
 @@||cdn.cookielaw.org/scripttemplates/otSDKStub.js$domain=larousse.fr
+@@||cdn.cookielaw.org/scripttemplates/otSDKStub.js$domain=lasestrellas.tv
 @@||cdn.cookielaw.org/scripttemplates/otSDKStub.js$domain=lessentiel.lu
 @@||cdn.cookielaw.org/scripttemplates/otSDKStub.js$domain=liveabout.com
 @@||cdn.cookielaw.org/scripttemplates/otSDKStub.js$domain=mcdonalds.com
@@ -5029,6 +5028,7 @@
 @@||defconlevel.com^$generichide
 @@||defensa.gob.es^$stealth=dpi
 @@||definitions.net^$generichide
+@@||dein-ort.de^$generichide
 @@||deine-tierwelt.de^$ghide
 @@||dejure.org/jcg/_advertisement.js
 @@||dejure.org/jcg/banner-ad.js
