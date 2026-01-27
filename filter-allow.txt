@@ -1,6 +1,6 @@
 ! Title: Exception Rules
-! Updated: 2026-01-26 04:20:24 UTC
-! Total Rules: 16957
+! Updated: 2026-01-27 04:12:14 UTC
+! Total Rules: 16963
 
 @@#.banner%20ad.$image,domain=dokuo666.blog98.fc2.com
 @@$cookie=__gads,domain=godstoryinfo.com|laweducationinfo.com|rsgames.xyz|vichitrainfo.com
@@ -677,6 +677,7 @@
 @@||1warie.com^$ghide
 @@||20minutos.es^$generichide
 @@||217.16.188.246^$generichide
+@@||24playerhd.com^$subdocument,stealth=referrer,domain=series-days.com
 @@||24u.jp^$generichide
 @@||25cineframes.com^$ghide
 @@||2700chess.com/js/analysis.js$script,1p
@@ -1894,6 +1895,7 @@
 @@||api.usercentrics.eu/settings/$domain=shop-apotheke.com
 @@||api.usercentrics.eu/settings/$domain=technisat.com
 @@||api.usercentrics.eu/settings/$domain=wohnglueck.de
+@@||api.usercentrics.eu/settings/*.json$domain=sso.bonify.de
 @@||api.usercentrics.eu/settings/*/latest$domain=kabeleinsdoku.de|kabeleinsdoku.at
 @@||api.usercentrics.eu/settings/*/latest/*.json$domain=filialen.santander.de
 @@||api.usercentrics.eu/settings/*/latest/*.json$domain=kabeleinsdoku.de|kabeleinsdoku.at
@@ -3151,7 +3153,7 @@
 @@||cdn.cookielaw.org/consent/*.json$domain=bostonglobe.com
 @@||cdn.cookielaw.org/consent/*.json$domain=dmax.de
 @@||cdn.cookielaw.org/consent/*.json$domain=ign.com
-@@||cdn.cookielaw.org/consent/*.json$domain=lasestrellas.tv
+@@||cdn.cookielaw.org/consent/*.json$domain=lasestrellas.tv|televisa.com
 @@||cdn.cookielaw.org/consent/*.json$domain=milwaukeetool.eu
 @@||cdn.cookielaw.org/consent/*.json$domain=mmamania.com|theverge.com|schweizer-illustrierte.ch
 @@||cdn.cookielaw.org/consent/*.json$domain=nintendolife.com
@@ -3207,7 +3209,7 @@
 @@||cdn.cookielaw.org/scripttemplates/otSDKStub.js$domain=idmobile.co.uk
 @@||cdn.cookielaw.org/scripttemplates/otSDKStub.js$domain=insideevs.*
 @@||cdn.cookielaw.org/scripttemplates/otSDKStub.js$domain=larousse.fr
-@@||cdn.cookielaw.org/scripttemplates/otSDKStub.js$domain=lasestrellas.tv
+@@||cdn.cookielaw.org/scripttemplates/otSDKStub.js$domain=lasestrellas.tv|televisa.com
 @@||cdn.cookielaw.org/scripttemplates/otSDKStub.js$domain=lessentiel.lu
 @@||cdn.cookielaw.org/scripttemplates/otSDKStub.js$domain=liveabout.com
 @@||cdn.cookielaw.org/scripttemplates/otSDKStub.js$domain=mcdonalds.com
@@ -3347,6 +3349,7 @@
 @@||cdn.ex.co/player/*.js$domain=sportday.gr
 @@||cdn.ex.co/transformations/production/$domain=sport24.gr
 @@||cdn.ex.co/transformations/production/$domain=sportday.gr
+@@||cdn.ex.co^$domain=standard.co.uk
 @@||cdn.exmarketplace.com/bidder/video_scripts/video_updated_*.js$domain=tvserial.it
 @@||cdn.fios.tv^$stealth=3p-auth
 @@||cdn.flashtalking.com/*.mp4?cb=$media,domain=safeframe.googlesyndication.com
@@ -8594,6 +8597,7 @@
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=rtl.it
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=rtlnieuws.nl
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=sbs.com.au
+@@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=screenrant.com
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=shares.enetres.net
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=shotstv.com
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=si.com|usmagazine.com
@@ -12278,6 +12282,7 @@
 @@||player.ex.co/player/$domain=thestreet.com
 @@||player.ex.co/player/$domain=usatoday.com
 @@||player.ex.co^$domain=reviewjournal.com
+@@||player.ex.co^$domain=standard.co.uk
 @@||player.fm^$cname
 @@||player.foxdcg.com/*/js/playback.js?*^ad$xmlhttprequest,domain=fox.com
 @@||player.glomex.com^$subdocument,stealth=referrer
@@ -16401,6 +16406,7 @@
 @@||web.cmp.usercentrics.eu/cdcs/v/*/index.html$domain=sporteurope.tv
 @@||web.cmp.usercentrics.eu/tcf/stub.js$domain=sporteurope.tv
 @@||web.cmp.usercentrics.eu/ui/$domain=sporteurope.tv,script
+@@||web.cmp.usercentrics.eu/ui/loader.js$script,domain=casino.psk.hr
 @@||web.cmp.usercentrics.eu^$domain=personio.com
 @@||web.map-m.com/*/api?appKey=$domain=toyota.jp,stealth=referrer
 @@||web.np.playstation.com/api^$stealth=3p-auth
