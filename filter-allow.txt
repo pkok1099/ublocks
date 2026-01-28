@@ -1,5 +1,5 @@
 ! Title: Exception Rules
-! Updated: 2026-01-27 04:12:14 UTC
+! Updated: 2026-01-28 04:10:21 UTC
 ! Total Rules: 16963
 
 @@#.banner%20ad.$image,domain=dokuo666.blog98.fc2.com
@@ -2120,6 +2120,7 @@
 @@||asianbookie.com^$script,1p
 @@||asianclub.*/asset/default/player/plugins/vast$script,1p
 @@||asianclub.*^$ghide
+@@||asianporn.li^$generichide
 @@||ask.qcloudimg.com^$stealth=referrer,domain=cloud.tencent.com
 @@||ask4movie.*^$generichide
 @@||aspdotnet-suresh.com^$generichide
@@ -4813,6 +4814,7 @@
 @@||customer-*.cloudflarestream.com/*/iframe$stealth=referrer
 @@||customeragent-v3.seb.se/Amelia$stealth=donottrack
 @@||customgames.ru/forum/js/*/ads.min.js
+@@||custommapposter.com^$generichide
 @@||custommapposter.com^$ghide
 @@||cutcaptcha.com/captcha/*$script,domain=filecrypt.cc|filecrypt.co
 @@||cw-api.takeaway.com^$stealth=3p-auth
@@ -6229,7 +6231,6 @@
 @@||fundingchoicesmessages.google.com/i/pub-$script,domain=fanatik.com.tr|milliyet.com.tr|posta.com.tr
 @@||fundingchoicesmessages.google.com/i/pub-*$script,domain=soranews24.com
 @@||fundingchoicesmessages.google.com/i/pub-*?*=$domain=now.gg|now.us
-@@||fundingchoicesmessages.google.com^$domain=androidacy.com
 @@||fundingchoicesmessages.google.com^$domain=rocketnews24.com|soranews24.com|youpouch.com,stealth=referrer
 @@||fundingchoicesmessages.google.com^$domain=ytlarge.com
 @@||fundingchoicesmessages.google.com^$script,3p,domain=fplstatistics.co.uk
@@ -9362,6 +9363,7 @@
 @@||kion.ru/api/$stealth=ip
 @@||kiplinger.112.2o7.net^
 @@||kissasian.*^$ghide
+@@||kissjav.com^$generichide
 @@||kit.fontawesome.com$stealth=referrer,domain=androidacy.com
 @@||kitsune-subs.anime-odcinki.pl/wp-content/themes/fanstrap/lib/js/advertisement.js
 @@||kiwihousesitters.co.nz/members$urlblock
@@ -10715,8 +10717,6 @@
 @@||nichepcgamer.com^$generichide
 @@||nik-ser.at.ua/js/pagead2.ads.js$domain=remont-aud.net
 @@||nike.com/checkout/analytics/js/analyticFunctions.js$domain=nike.com
-@@||nikitaeverywhere.com/nikitaeverywhere-com-content/data.json|$xhr,1p
-@@||nikitaeverywhere.com/static/js/main-*.js|$script,1p
 @@||ninja.io/js/dist/ads.js
 @@||ninja.onap.io/ninja-*.js$domain=olx.kz|olx.ua|olx.pl
 @@||nintendo.co.kr^$stealth=dpi
@@ -11151,7 +11151,6 @@
 @@||pagead2.googlesyndication.com/pagead/$script,domain=fplstatistics.com
 @@||pagead2.googlesyndication.com/pagead/$script,domain=safelinkunited.blogspot.com
 @@||pagead2.googlesyndication.com/pagead/$script,domain=soranews24.com
-@@||pagead2.googlesyndication.com/pagead/$script,xhr,domain=androidacy.com
 @@||pagead2.googlesyndication.com/pagead/$stealth=referrer,domain=adshnk.com|adshrink.it
 @@||pagead2.googlesyndication.com/pagead/$xhr,domain=decrypt.day
 @@||pagead2.googlesyndication.com/pagead/*$image,domain=free-scores.com
@@ -11814,6 +11813,7 @@
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$xmlhttprequest,domain=japangaysex.com
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$xmlhttprequest,domain=javbee.*
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$xmlhttprequest,domain=kapang.com
+@@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$xmlhttprequest,domain=kissjav.com|asianporn.li
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$xmlhttprequest,domain=leakshaven.com
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$xmlhttprequest,domain=lenouvelliste.com
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$xmlhttprequest,domain=lokerwfh.net|tutwuri.id|techbloogs.com
@@ -12558,7 +12558,6 @@
 @@||prod.sfm.geforcenow.nvidiagrid.net^$stealth=3p-auth
 @@||prod.sixthcontinent.com/webapi/getaccesstoken$stealth=ip
 @@||product.minebeamitsumi.com/assets/scripts/modules/cookieBanner.js$~third-party
-@@||production-api.androidacy.com^$script,1p
 @@||production-public.tubi.io^$stealth=3p-auth
 @@||products.wera.de^$xhr,1p
 @@||professionaltutorial.com^$generichide
@@ -14756,6 +14755,7 @@
 @@||stats.g.doubleclick.net/dc.js$domain=softkey.ru|softkey.ua
 @@||stats.g.doubleclick.net/dc.js$domain=synonimy.pl
 @@||stats.g.doubleclick.net/dc.js$script,domain=ticketfly.com
+@@||stats.g.doubleclick.net/g/$xhr,domain=androidacy.com
 @@||stats.g.doubleclick.net/r/collect$image,domain=shinden.pl
 @@||stats.g.doubleclick.net^$domain=sportshub.to
 @@||stats.g.doubleclick.net^|$app=com.nttdocomo.android.danimeapp
