@@ -1,6 +1,6 @@
 ! Title: Exception Rules
-! Updated: 2026-01-28 04:10:21 UTC
-! Total Rules: 16963
+! Updated: 2026-01-29 04:44:21 UTC
+! Total Rules: 16953
 
 @@#.banner%20ad.$image,domain=dokuo666.blog98.fc2.com
 @@$cookie=__gads,domain=godstoryinfo.com|laweducationinfo.com|rsgames.xyz|vichitrainfo.com
@@ -275,7 +275,7 @@
 @@/aot-content/modules/*/assests$script,1p,domain=asiaon.*|asiaontop.com
 @@/assets/ads-*.js$domain=notateslaapp.com
 @@/assets/js/advertisement.js$~third-party
-@@/assets/prebid/*.js$script,xmlhttprequest,domain=gentside.com|gentside.de|gentside.co.uk|gentside.com.br|maxisciences.com|ohmymag.com|ohmymag.de|ohmirevista.com
+@@/assets/prebid/*.js$script,xmlhttprequest,domain=gentside.com|gentside.de|gentside.co.uk|gentside.com.br|maxisciences.com|ohmymag.com|ohmymag.de
 @@/banners*swf$domain=vma.esec.vu.lt
 @@/beacon.js$domain=ww1.canada.com
 @@/blockadblock.$script,domain=blockadblock.com
@@ -380,10 +380,10 @@
 @@/js/prebid-ads.js$domain=files.fm|file.fm
 @@/js/prebid-ads.js$script,1p
 @@/js/prebid-ads.js$~third-party,domain=sharetext.me|getpaste.link
-@@/js/prebid/*/others.$script,domain=gentside.com|gentside.de|gentside.co.uk|gentside.com.br|maxisciences.com|ohmymag.com|ohmymag.de|ohmirevista.com
-@@/js/prebid/*/others/*$script,domain=gentside.com|gentside.de|gentside.co.uk|gentside.com.br|maxisciences.com|ohmymag.com|ohmymag.de|ohmirevista.com
-@@/js/prebid/others.$script,domain=gentside.com|gentside.de|gentside.co.uk|gentside.com.br|maxisciences.com|ohmymag.com|ohmymag.de|ohmirevista.com
-@@/js/prebid/others/*$script,domain=gentside.com|gentside.de|gentside.co.uk|gentside.com.br|maxisciences.com|ohmymag.com|ohmymag.de|ohmirevista.com
+@@/js/prebid/*/others.$script,domain=gentside.com|gentside.de|gentside.co.uk|gentside.com.br|maxisciences.com|ohmymag.com|ohmymag.de
+@@/js/prebid/*/others/*$script,domain=gentside.com|gentside.de|gentside.co.uk|gentside.com.br|maxisciences.com|ohmymag.com|ohmymag.de
+@@/js/prebid/others.$script,domain=gentside.com|gentside.de|gentside.co.uk|gentside.com.br|maxisciences.com|ohmymag.com|ohmymag.de
+@@/js/prebid/others/*$script,domain=gentside.com|gentside.de|gentside.co.uk|gentside.com.br|maxisciences.com|ohmymag.com|ohmymag.de
 @@/js/wp-banners.js$domain=articlerewritertool.com|spinbot.com|free-article-spinner.com
 @@/kcarting-tally?&random=$domain=coveryourtracks.eff.org
 @@/key=$media,domain=ashemaletube.com
@@ -582,7 +582,6 @@
 @@|http*:*/ws|$domain=beta.speedtest.net
 @@|http*://*.*/*.$image,third-party,domain=a2zupload.com
 @@|http://$xmlhttprequest,domain=depositfiles.com|depositfiles.org|dfiles.eu|dfiles.ru
-@@|http://*.theinquirer.net/$script
 @@|http://ie.microsoft.com/testdrive/Performance/FishBowl/Default.html|$document
 @@|https://$xmlhttprequest,domain=depositfiles.com|depositfiles.org|dfiles.eu|dfiles.ru
 @@|https://$xmlhttprequest,third-party,domain=socketloop.com
@@ -1194,7 +1193,7 @@
 @@||adservice.google.*/adsid/integrator.js$domain=soranews24.com
 @@||adservice.google.*/adsid/integrator.js$domain=thehouseofportable.com
 @@||adservice.google.*/adsid/integrator.js?domain=dl.ccbluex.net$domain=dl.ccbluex.net
-@@||adservice.google.*/adsid/integrator.js^$domain=gentside.com|gentside.de|gentside.co.uk|gentside.com.br|maxisciences.com|ohmymag.com|ohmymag.de|ohmirevista.com
+@@||adservice.google.*/adsid/integrator.js^$domain=gentside.com|gentside.de|gentside.co.uk|gentside.com.br|maxisciences.com|ohmymag.com|ohmymag.de
 @@||adservice.google.*/ddm/clk
 @@||adservice.google.com.tr/adsid/integrator.js$domain=playhub.com
 @@||adservice.google.com/adsid/integrator.js$domain=943thex.com
@@ -1612,7 +1611,6 @@
 @@||animesanka.*^$ghide
 @@||animesanka.club^$generichide
 @@||animeshouse.net/mp4doo/$stealth=referrer
-@@||animesonline.nz/noance/$subdocument,stealth=referrer
 @@||animesrbija.com^$generichide
 @@||animetake*.*^$ghide
 @@||animetake*.*^$script,1p
@@ -1879,6 +1877,7 @@
 @@||api.themoviedb.org^$stealth=3p-auth
 @@||api.thingiverse.com/banner/*/pageAd$xhr,1p
 @@||api.unidadeditorial.es/sports/v1/events/*$xhr
+@@||api.unity.com^$stealth=ip
 @@||api.useinsider.com/sw.js$domain=gratis.com
 @@||api.useinsider.com^$domain=ing.com.tr
 @@||api.useinsider.com^$domain=lenovo.com
@@ -3014,7 +3013,7 @@
 @@||cdn.adpushup.com/*/adpushup.js$xhr,domain=tejtime24.com
 @@||cdn.adpushup.com/46258/adpushup.js$xmlhttprequest,domain=tejtime24.com
 @@||cdn.adrise.tv/js/ads.js$domain=tubitv.com
-@@||cdn.adsafeprotected.com/*.*.js$domain=gentside.com|gentside.de|gentside.co.uk|gentside.com.br|maxisciences.com|ohmymag.com|ohmymag.de|ohmirevista.com
+@@||cdn.adsafeprotected.com/*.*.js$domain=gentside.com|gentside.de|gentside.co.uk|gentside.com.br|maxisciences.com|ohmymag.com|ohmymag.de
 @@||cdn.adsafeprotected.com/*.js$domain=gentside.com|ohmymag.com
 @@||cdn.adsafeprotected.com^$domain=tio.ch
 @@||cdn.adsafeprotected.com^$script,domain=gentside.*|ohmymag.*|maxisciences.com
@@ -4506,6 +4505,7 @@
 @@||consent.cookiefirst.com/banner/$domain=juffing.at
 @@||consent.cookiefirst.com/sites$stealth=referrer
 @@||consent.cookiefirst.com/sites/$domain=juffing.at
+@@||consent.cookiefirst.com/sites/$script,domain=jafco.co.jp
 @@||consent.cookiefirst.com^$domain=blutspendedienst.com
 @@||consent.cookiefirst.com^$domain=lsm.lv
 @@||consent.cookiefirst.com^$domain=proaurum.de
@@ -7784,7 +7784,7 @@
 @@||googletagservices.com/tag/js/gpt.js$domain=falkirkherald.co.uk
 @@||googletagservices.com/tag/js/gpt.js$domain=fukuishimbun.co.jp
 @@||googletagservices.com/tag/js/gpt.js$domain=gaming.uefa.com
-@@||googletagservices.com/tag/js/gpt.js$domain=gentside.com|gentside.de|gentside.co.uk|gentside.com.br|maxisciences.com|ohmymag.com|ohmymag.de|ohmirevista.com
+@@||googletagservices.com/tag/js/gpt.js$domain=gentside.com|gentside.de|gentside.co.uk|gentside.com.br|maxisciences.com|ohmymag.com|ohmymag.de
 @@||googletagservices.com/tag/js/gpt.js$domain=globe.adsbexchange.com|hostednovel.com|getemoji.com|concertarchives.org|mouse-sensitivity.com|thisisanfield.com|titantv.com|baeldung.com|creaders.net|virtualpiano.net|phoronix.com|androidheadlines.com|myabandonware.com|gamerescape.com|knowt.com|lse.co.uk|thenation.com|smithsonianmag.com|flightconnections.com|adsoftheworld.com|camelcamelcamel.com|emojipedia.org|boingboing.net|flightaware.com|pc-builds.com|fragrantica.*|newrepublic.com|wenxuecity.com|aerowitter.com|aerolla.net|box.live|neowin.net
 @@||googletagservices.com/tag/js/gpt.js$domain=gotrip.hk
 @@||googletagservices.com/tag/js/gpt.js$domain=happypancake.se|happypancake.fi
@@ -8477,7 +8477,7 @@
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=gazetaolsztynska.pl
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=gbnews.com
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=gbnews.uk
-@@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=gentside.com|gentside.de|gentside.co.uk|gentside.com.br|maxisciences.com|ohmymag.com|ohmymag.de|ohmirevista.com
+@@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=gentside.com|gentside.de|gentside.co.uk|gentside.com.br|maxisciences.com|ohmymag.com|ohmymag.de
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=get.x-link.pl
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=girlgames.com
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=globoplay.globo.com
@@ -8810,6 +8810,7 @@
 @@||imasdk.googleapis.com/js/sdkloader/ima3_dai.js$script,domain=virginmediatelevision.ie
 @@||imasdk.googleapis.com/js/sdkloader/ima3_dai.js$script,domain=winknews.com
 @@||imasdk.googleapis.com/js/sdkloader/ima3_dai.js$script,domain=yaktrinews.com
+@@||imasdk.googleapis.com/js/sdkloader/ima3_dai.js$script,domain=zee5.com
 @@||imasdk.googleapis.com/js/sdkloader/ima3_dai.js$xhr,domain=mtv.it|mtv.de|mtv.co.uk|mtvema.com
 @@||imasdk.googleapis.com/js/sdkloader/ima3_dai_debug.js$domain=cbsnews.com
 @@||imasdk.googleapis.com/js/sdkloader/ima3_debug.js$domain=cbssports.com
@@ -9132,7 +9133,6 @@
 @@||javbucks.com^$css,domain=javhd.com
 @@||javcl.com^$generichide
 @@||javfinder.id$elemhide
-@@||javhdonline.com^$generichide
 @@||javhdx.tv$generichide
 @@||javhoho.com^$generichide
 @@||javmost.com/ad*.php$frame,1p
@@ -10501,7 +10501,6 @@
 @@||mwstats.info^$script,1p
 @@||mx-sh.net/advertisements.js
 @@||mx-sh.net^$generichide
-@@||mxcontent.net/*.mp4$media,stealth=referrer
 @@||mxomo.com^$image,stealth=referrer,domain=kxo.moe
 @@||mxpnl.com/libs/mixpanel-*.min.js$domain=barracudanetworks.com
 @@||mxpnl.com^$domain=dailysteals.com
@@ -11549,6 +11548,7 @@
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$domain=quackr.io
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$domain=quienhabla.mx,xmlhttprequest
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$domain=quizack.com
+@@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$domain=radio.de|radio.at|radio.net
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$domain=radiotunes.com
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$domain=rain-alarm.com
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$domain=rbtv77.*|live-streamfootball.*|superabbit77.*|superabbit33.*|superdom77.*|superlee77.*|superleo77.*|superargo77.*|superbarca77.*|linelocatemfsn.*|homebasis4d.*|mindmotion93y8.*|monkeynecktj4w.*|masterenjoyao.*|differenceprimitive85p.*|blewdiffera3j2.*|strangernervousql.*|leadmorning4ivn.*|somehowrockyng.*|currentcolorq2dv.*|determinemousecshe.*|publicspeed5c.*
@@ -12034,7 +12034,6 @@
 @@||partner.googleadservices.com/gpt/pubads_impl_$domain=indiatimes.com
 @@||partner.googleadservices.com/gpt/pubads_impl_$domain=mycokerewards.com
 @@||partner.googleadservices.com/gpt/pubads_impl_$domain=simple.ripley.cl
-@@||partner.googleadservices.com/gpt/pubads_impl_$domain=theinquirer.net
 @@||partner.googleadservices.com/gpt/pubads_impl_$domain=ukr.net
 @@||partner.googleadservices.com/gpt/pubads_impl_$script,domain=muscleandfitness.com
 @@||partner.googleadservices.com^$domain=popsugar.com
@@ -13163,10 +13162,8 @@
 @@||s.nitropay.com/1.gif?*&adslot=$domain=tiermaker.com
 @@||s.nitropay.com/ads-$script,3p,domain=app.axenthost.com
 @@||s.nitropay.com/ads-*.js$domain=dankmemer.lol
-@@||s.nitropay.com/ads-*.js$domain=maxroll.gg
 @@||s.nitropay.com/ads-*.js$domain=soccerguru.live
 @@||s.nitropay.com/ads-437.js$domain=wago.io
-@@||s.nitropay.com/n.svg$domain=maxroll.gg
 @@||s.nitropay.com/n.svg$xhr,domain=maxroll.gg
 @@||s.nitropay.com^$domain=app.axenthost.com
 @@||s.ntv.io/serve/load.js$domain=autosport.com
@@ -13614,7 +13611,6 @@
 @@||securepubads.g.doubleclick.net/gampad/ads$domain=rbc.ru
 @@||securepubads.g.doubleclick.net/gampad/ads$domain=simple.ripley.cl
 @@||securepubads.g.doubleclick.net/gampad/ads$domain=softonic.com
-@@||securepubads.g.doubleclick.net/gampad/ads$domain=theinquirer.net
 @@||securepubads.g.doubleclick.net/gampad/ads$xhr,3p,domain=w3schools.com
 @@||securepubads.g.doubleclick.net/gampad/ads$xhr,domain=mope.io
 @@||securepubads.g.doubleclick.net/gampad/ads$xhr,domain=programme-tv.net
@@ -13648,7 +13644,7 @@
 @@||securepubads.g.doubleclick.net/gpt/pubads_impl_$domain=cimri.com
 @@||securepubads.g.doubleclick.net/gpt/pubads_impl_$domain=digitaltrends.com
 @@||securepubads.g.doubleclick.net/gpt/pubads_impl_$domain=epaper.timesgroup.com
-@@||securepubads.g.doubleclick.net/gpt/pubads_impl_$domain=gentside.com|gentside.de|gentside.co.uk|gentside.com.br|maxisciences.com|ohmymag.com|ohmymag.de|ohmirevista.com
+@@||securepubads.g.doubleclick.net/gpt/pubads_impl_$domain=gentside.com|gentside.de|gentside.co.uk|gentside.com.br|maxisciences.com|ohmymag.com|ohmymag.de
 @@||securepubads.g.doubleclick.net/gpt/pubads_impl_$domain=gumtree.com
 @@||securepubads.g.doubleclick.net/gpt/pubads_impl_$domain=history.com
 @@||securepubads.g.doubleclick.net/gpt/pubads_impl_$domain=ibtimes.co.in
@@ -14010,7 +14006,6 @@
 @@||sharecast.ws/player/$stealth=referrer
 @@||shareinfo.pl^$generichide
 @@||sharejunction.com^$generichide
-@@||sharepirate.com^$generichide
 @@||sharethis.com/button/$script,domain=dl.go4up.com
 @@||sharethis.com^$third-party,domain=gamesradar.com
 @@||sharethrough.com/*placement$domain=looper.com
@@ -14029,7 +14024,6 @@
 @@||shieldsgazette.com^$generichide
 @@||shikimori.*/comments/*/edit$extension
 @@||shinden.pl^$generichide
-@@||shink.in$generichide
 @@||shinsori.com/wp-content/plugins/jetpack/_inc/build/widgets/eu-cookie-law/eu-cookie-law.min.js$domain=shinsori.com
 @@||shinsori.com^$generichide
 @@||ship.bigcrunch.com/prebid/$domain=tvtropes.org
@@ -14303,7 +14297,6 @@
 @@||spd-sachsen.de/wp-content/uploads/dynamic_avia/avia-footer-scripts-*.js
 @@||speaker-test.com^$generichide
 @@||speakingtree.in^$ghide
-@@||speed4up.com/themes/flow/frontend_assets/js/advertisement.js
 @@||speedcurve.com/js/lux.js$script,domain=tv8.it
 @@||speedtest.net/*-login.php$domain=speedtest.net
 @@||speedtest.net/api/api.php
@@ -14386,8 +14379,6 @@
 @@||ssl-gumtree.classistatic.com/*/_/advertising.js
 @@||ssl-images-amazon.com/*/satelliteLib-$script,domain=audible.*
 @@||ssl-thumb2.720static.com^$stealth=referrer,image
-@@||ssl.cf3.rackcdn.com/Ads/*$domain=theinquirer.net
-@@||ssl.cf3.rackcdn.com/Pub/*$domain=theinquirer.net
 @@||ssl.geoplugin.net/javascript.gp$domain=forfun.ist
 @@||ssl.geoplugin.net/javascript.gp$domain=imalentstore.com
 @@||ssl.geoplugin.net/javascript.gp$domain=retrohahn.myshopify.com
@@ -16265,7 +16256,6 @@
 @@||vntsm.com/*/ad-manager.min.js$script,domain=aternos.org
 @@||vo.msecnd.net^$domain=gsmarena.com
 @@||vod*.myqcloud.com^$stealth=referrer,domain=cloud.tencent.com
-@@||vod-*=video/mp4$media,stealth=referrer,domain=animesonline.nz
 @@||vod.olympics2010.msn.com/beacon?
 @@||vod.tvp.pl^$generichide
 @@||vod.tvp.pl^$ghide
